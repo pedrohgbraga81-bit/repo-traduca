@@ -11,11 +11,11 @@
           <button class=fechar-menu></button>
           <ul>
 
-            <li><a href="index.php" class="<?= ($pgAtual == 'index.php') ? 'ativo' : '' ?>">Home</a></li>
-            <li><a href="sobre.php" class="<?= ($pgAtual == 'sobre.php') ? 'ativo' : '' ?>"> Sobre</a></li>
-            <li><a href="servicos.php" class="<?= ($pgAtual == 'servico.php') ? 'ativo' : '' ?>">Serviços</a></li>
-            <li><a href="quiz.php" class="<?= ($pgAtual == 'quiz.php') ? 'ativo' : '' ?>">Quiz</a></li>
-            <li><a href="contato.php" class="<?= ($pgAtual == 'contato.php') ? 'ativo' : '' ?>">Contato</a></li>
+            <li><a href="{{ route('home') }}" class="<?= ($pgAtual == 'index.php') ? 'ativo' : '' ?>">Home</a></li>
+            <li><a href="{{ route('sobre') }}" class="<?= ($pgAtual == 'sobre.php') ? 'ativo' : '' ?>"> Sobre</a></li>
+            <li><a href="{{ route('servico') }}" class="<?= ($pgAtual == 'servico.php') ? 'ativo' : '' ?>">Serviços</a></li>
+            <li><a href="{{ route('quiz') }}" class="<?= ($pgAtual == 'quiz.php') ? 'ativo' : '' ?>">Quiz</a></li>
+            <li><a href="{{ route('contato') }}" class="<?= ($pgAtual == 'contato.php') ? 'ativo' : '' ?>">Contato</a></li>
             <li><a href="ctrlPainel.php" class="<?= ($pgAtual == 'ctrlPainel.php') ? 'ativo' : '' ?>">Painel</a></li>
 
           </ul>

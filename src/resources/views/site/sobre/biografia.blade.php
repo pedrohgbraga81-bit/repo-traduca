@@ -2,7 +2,7 @@
     <div class="container">
         <div class="sobre-container">
             <div class="imagem-container">
-                <img src="./img/globo2.png" alt="Professsor Caetano" class="img-perfil">
+                <img src="{{ asset('traduca/img/globo2.png') }}" alt="Professsor Caetano" class="img-perfil">
             </div>
 
             <div class="texto-sobre">
@@ -13,11 +13,7 @@
                         Passei por cargos de liderança pedagógica no Yázigi e na Bridge English Brasil, onde coordenei programas de inglês para multinacionais como Walmart, BASF, FMGlobal e 3M.
                         Hoje, sou docente no Senac São Paulo, atuando com metodologias baseadas em projetos, e professor de italiano no Spazio Italiano, onde também preparo alunos para o exame CILS, do qual sou aplicador certificado. Minhas competências incluem coordenação pedagógica, tradução, revisão e design instrucional.
                     </p>
-
-
                 </div>
-
-
             </div>
         </div>
     </div>

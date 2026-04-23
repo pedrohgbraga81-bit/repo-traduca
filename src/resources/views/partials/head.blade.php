@@ -43,4 +43,5 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
   <link rel="stylesheet" href="{{ asset('traduca/css/estilo.css') }}" />
   <link rel="stylesheet" href="{{ asset('traduca/css/responsivo.css') }}">
+  <link rel="stylesheet" href="{{ asset('traduca/css/quiz.css') }}" />
 </head>

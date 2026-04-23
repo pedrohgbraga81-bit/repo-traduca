@@ -6,7 +6,7 @@
         <span class="cta-highlight__glow cta-highlight__glow--secondary"></span>
 
         <div class="cta-highlight__logo-wrap">
-          <img src="img/logoBranco.svg" alt="" class="cta-highlight__logo">
+          <img src="{{ asset('traduca/img/logoBranco.svg') }}" alt="" class="cta-highlight__logo">
         </div>
       </div>
 

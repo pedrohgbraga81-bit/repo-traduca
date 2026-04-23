@@ -9,3 +9,7 @@
   <!-- <script src="javascript.js"></script> -->
 
   <script src="{{ asset('traduca/js/animacao.js') }}"></script>
+  <script src="{{ asset('traduca/js/contato.js') }}"></script>
+  <script type="module" src="{{ asset('traduca/js/quiz.js') }}"></script>
+  
+  
