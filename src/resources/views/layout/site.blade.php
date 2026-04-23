@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    @include('partials.head')
+</head>
+<body>
+
+    @include('partials.header')
+
+    <main>
+        @yield('content')
+    </main>
+
+    @include('partials.footer')
+
+
+    @include('partials.script')
+</body>
+</html>
