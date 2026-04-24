@@ -25,7 +25,8 @@ Celulares - 0 ate 768
   }
 
   .topo h1 {
-    width: 250px;
+    width: 180px;
+    height: 68px;
   }
 
   .topo nav ul {
@@ -105,6 +106,10 @@ Celulares - 0 ate 768
 
 /* Celulares - 0 ate 768 */
 @media (max-width: 768px) {
+  body {
+    padding-top: 82px;
+  }
+
   .rodape-centro ul {
     display: flex;
     flex-direction: row;
@@ -124,7 +129,8 @@ Celulares - 0 ate 768
   }
 
   .topo h1 {
-    width: 350px;
+    width: 150px;
+    height: 56px;
   }
 
   .topo nav {

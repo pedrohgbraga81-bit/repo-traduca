@@ -1,6 +1,6 @@
 @php
-    $ok = $ok ?? request()->ok ?? null;
-    $nome = $nome ?? request()->nome ?? '';
+$ok = $ok ?? request()->ok ?? null;
+$nome = $nome ?? request()->nome ?? '';
 @endphp
 
 <main id="main_container">
@@ -127,7 +127,7 @@
             </div>
 
             <div class="input-group">
-                <label for="messagem"> Mensagem </label>
+                <label for="message"> Mensagem </label>
                 <textarea name="menssagem" id="message" required rows="5"> </textarea>
             </div>
             <h3

@@ -75,10 +75,16 @@ if (sections.length && progressBar && prevBtn && nextBtn) {
 }
 
 // Idade
-$(".option").click(function () {
-  $(".option").removeClass("active");
-  $(this).addClass("active");
-});
+const ageOptions = document.querySelectorAll('.option');
+
+if (ageOptions.length) {
+  ageOptions.forEach((option) => {
+    option.addEventListener('click', () => {
+      ageOptions.forEach((item) => item.classList.remove('active'));
+      option.classList.add('active');
+    });
+  });
+}
 
 const abrirMenu = document.querySelector('.abrir-menu');
 const fecharMenu = document.querySelector('.fechar-menu');

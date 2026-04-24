@@ -9,6 +9,7 @@
   --cor--fundo: #fff;
 
   --largura--maxima: 1500px;
+  --altura--topo: 92px;
     
   --texto--tamanho: 16px; /* rem ou em - 30px / 16px = 1,875em */
 
@@ -38,6 +39,11 @@ a,
 td,
 th {
   font-family: var(--fonte--base);
+}
+
+body {
+  margin: 0;
+  padding-top: var(--altura--topo);
 }
 
 h1,
@@ -81,13 +87,18 @@ button,
 
 .topo {
   width: 100%;
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 1000;
   background-color: var(--cor--fundo);
-  padding-block: 17px;
+  padding-block: 10px;
+  box-shadow: 0 8px 24px rgba(7, 20, 51, 0.08);
 }
 
 .topo h1 {
-  width: 231px;
-  height: 90px;
+  width: 190px;
+  height: 72px;
+  margin: 0;
   overflow: hidden;
   background-image: url(../img/logo.png);
   background-repeat: no-repeat;
@@ -96,7 +107,7 @@ button,
 }
 
 body.dark .topo h1 {
-  background-image: url(../img/logoBranco.svg) !important;
+  background-image: url("../img/LogoBranco.svg") !important;
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -104,6 +115,8 @@ body.dark .topo h1 {
 .topo nav ul {
   display: flex;
   justify-content: center;
+  margin: 0;
+  padding: 0;
   list-style: none;
   /* gap: 25px; */
 }
@@ -120,7 +133,7 @@ body.dark .topo h1 {
   transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.ativo {
+.topo nav ul li a.ativo {
   color: var(--cor--destaque) !important;
 }
 
@@ -150,7 +163,7 @@ body.dark .topo h1 {
 }
 
 /* Linha fixa no item ativo */
-nav ul li a.ativo::after {
+.topo nav ul li a.ativo::after {
   width: 100%;
 }
 
@@ -158,6 +171,9 @@ nav ul li a.ativo::after {
   display: flex;
   justify-content: flex-end;
   gap: 0.5em;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .redes li {
@@ -275,7 +291,7 @@ nav ul li.dropdown:hover .submenu {
 /* ########## BANNER ########## */
 .banner{
   position: relative;
-  min-height: 700px;
+  min-height: 620px;
   overflow: hidden;
   isolation: isolate;
   display: flex;
@@ -312,8 +328,12 @@ nav ul li.dropdown:hover .submenu {
 .banner__content{
   position: relative;
   z-index: 2;
-  min-height: 700px;
-  padding-block: 120px 80px;
+  width: 100%;
+  max-width: var(--largura--maxima);
+  min-height: 620px;
+  margin: 0 auto;
+  padding-block: 96px 64px;
+  text-align: left;
 }
 
 .banner .container{
@@ -327,20 +347,23 @@ nav ul li.dropdown:hover .submenu {
   color: #fdfdfd;
   font-family: var(--font--menu);
   font-weight: bold;
-  margin-top: 0;
+  margin: 0;
   max-width: 760px;
   font-size: clamp(2.4rem, 5vw, 4.6rem);
   line-height: 1.05;
   text-wrap: balance;
+  text-align: left;
 }
 
 .banner p{
   color: #fdfdfd;
   font-family: var(--fonte--base);
   font-weight: bold;
+  margin: 18px 0 0;
   font-size: clamp(1.05rem, 1.7vw, 1.35rem);
   line-height: 1.6;
   max-width: 700px;
+  text-align: left;
 }
 
 @keyframes bannerFloat {
@@ -356,18 +379,18 @@ nav ul li.dropdown:hover .submenu {
 @media (max-width: 992px) {
   .banner,
   .banner__content{
-    min-height: 580px;
+    min-height: 540px;
   }
 
   .banner__content{
-    padding-block: 110px 70px;
+    padding-block: 88px 56px;
   }
 }
 
 @media (max-width: 768px) {
   .banner,
   .banner__content{
-    min-height: 500px;
+    min-height: 440px;
   }
 
   .banner__media{
@@ -375,7 +398,7 @@ nav ul li.dropdown:hover .submenu {
   }
 
   .banner__content{
-    padding-block: 100px 60px;
+    padding-block: 76px 48px;
   }
 
   .banner h1{
@@ -1094,8 +1117,8 @@ nav ul li.dropdown:hover .submenu {
         display: flex;
         align-items: center;
         gap: 8px;
-        box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1);
-        background-color: #ffff;
+        box-shadow: 0px 3px 5px var(--cor--texto);
+        background-color: var(--cor--fundo);
         padding: 18px 12px;
         border-radius: 8px;
         text-decoration: none;
@@ -1103,7 +1126,7 @@ nav ul li.dropdown:hover .submenu {
         transition: box-shadow 0.3s ease;
 
         &:hover {
-          box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 3px 10px var(--cor--destaque);
         }
 
         .cards-icon {
@@ -1126,7 +1149,7 @@ nav ul li.dropdown:hover .submenu {
             font-size: 1rem;
             font-weight: 400;
             line-height: 1rem;
-            color: #010002;
+            color: var(--cor--texto);
 
 
           }
@@ -1134,7 +1157,7 @@ nav ul li.dropdown:hover .submenu {
           span {
             font-size: 0.8rem;
             font-weight: 500;
-            color: #475569;
+            color: var(--cor--texto);
 
           }
         }
@@ -1234,11 +1257,11 @@ nav ul li.dropdown:hover .submenu {
 
   #contacts_form_container {
     width: 104%;
-    background-color: #ffff;
+    background-color: var(--cor--fundo);
     padding: 24px;
     max-width: 800px;
     border-radius: 12px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px var(--cor--texto);
 
     h3 {
       font-size: 1em;
@@ -1561,6 +1584,17 @@ nav ul li.dropdown:hover .submenu {
   flex-wrap: wrap;
 }
 
+.rodape-info {
+  display: grid;
+  gap: 6px;
+}
+
+.rodape-info p,
+.rodape-redes span {
+  margin: 0;
+  line-height: 1.35;
+}
+
 .rodape-centro ul {
   display: flex;
   gap: 12px;
@@ -1583,6 +1617,8 @@ nav ul li.dropdown:hover .submenu {
   border: none;
   list-style: none;
   display: flex;
+  padding: 0;
+  line-height: 1.2;
   text-transform: uppercase;
   font-size: 12px;
   background-color: var(--cor--fundo);

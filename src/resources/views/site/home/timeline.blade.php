@@ -132,7 +132,7 @@
             <p>Produzir textos claros, bem estruturados e detalhados sobre assuntos complexos.</p>
           </article>
           <article class="timeline-card">
-            <i class="bi bi-masks-theater"></i>
+            <i class="bi bi-mask"></i>
             <h3>Nuances culturais</h3>
             <p>Compreender significados implícitos, humor, expressões idiomáticas e contextos culturais.</p>
           </article>

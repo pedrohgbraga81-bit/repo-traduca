@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>TraducaIdiomas</title>
@@ -23,11 +20,6 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="msapplication-TileImage" content="{{ asset('traduca/img/icon/ms-icon-144x144.png') }}">
   <meta name="theme-color" content="#ffffff">
-  <!-- CODIGO PARA O CARROSSEL  -->
-  <link rel="stylesheet" type="text/css" href="{{ asset('traduca/css/slick.css') }}" />
-  <link rel="stylesheet" type="text/css" href="{{ asset('traduca/css/slick-theme.css') }}" />
-  <!-- CODIGO PARA O CARROSSEL  -->
-  <link rel="stylesheet" href="{{asset('traduca/css/lity.min.css')}}" />
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -44,4 +36,3 @@
   <link rel="stylesheet" href="{{ asset('traduca/css/estilo.css') }}" />
   <link rel="stylesheet" href="{{ asset('traduca/css/responsivo.css') }}">
   <link rel="stylesheet" href="{{ asset('traduca/css/quiz.css') }}" />
-</head>

@@ -1,22 +1,17 @@
     <header class="topo">
       <div class="container">
         <h1>TraducaIdiomas</h1>
-        <?php
-        $pgAtual = basename(path: $_SERVER['REQUEST_URI']);
-        // echo($pgAtual);
-        ?>
 
         <button class=abrir-menu></button>
         <nav>
           <button class=fechar-menu></button>
           <ul>
 
-            <li><a href="{{ route('home') }}" class="<?= ($pgAtual == 'index.php') ? 'ativo' : '' ?>">Home</a></li>
-            <li><a href="{{ route('sobre') }}" class="<?= ($pgAtual == 'sobre.php') ? 'ativo' : '' ?>"> Sobre</a></li>
-            <li><a href="{{ route('servico') }}" class="<?= ($pgAtual == 'servico.php') ? 'ativo' : '' ?>">Serviços</a></li>
-            <li><a href="{{ route('quiz') }}" class="<?= ($pgAtual == 'quiz.php') ? 'ativo' : '' ?>">Quiz</a></li>
-            <li><a href="{{ route('contato') }}" class="<?= ($pgAtual == 'contato.php') ? 'ativo' : '' ?>">Contato</a></li>
-            <li><a href="ctrlPainel.php" class="<?= ($pgAtual == 'ctrlPainel.php') ? 'ativo' : '' ?>">Painel</a></li>
+            <li><a class="{{ request()->routeIs('home') ? 'ativo' : '' }}" href="{{ route('home') }}">Home</a></li>
+            <li><a class="{{ request()->routeIs('sobre') ? 'ativo' : '' }}" href="{{ route('sobre') }}">Sobre</a></li>
+            <li><a class="{{ request()->routeIs('servico') ? 'ativo' : '' }}" href="{{ route('servico') }}">Serviços</a></li>
+            <li><a class="{{ request()->routeIs('quiz') ? 'ativo' : '' }}" href="{{ route('quiz') }}">Quiz</a></li>
+            <li><a class="{{ request()->routeIs('contato') ? 'ativo' : '' }}" href="{{ route('contato') }}">Contato</a></li>
 
           </ul>
         </nav>

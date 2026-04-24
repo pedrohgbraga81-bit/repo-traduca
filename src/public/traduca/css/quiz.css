@@ -205,8 +205,7 @@
 .quizResultadoDetalhes p,
 .quizPainelProximo p,
 .quizCursoCard p,
-.quizCursoResumo p,
-.quizCefrConteudo p {
+.quizCursoResumo p {
   font-size: 1.02rem;
   line-height: 1.75;
   color: rgba(51, 51, 51, 0.9);
@@ -214,7 +213,6 @@
 }
 
 .quizIdioma,
-.quizCefr,
 .quizArea,
 .quizCursos {
   padding-top: 72px;
@@ -230,8 +228,7 @@
 .quizPrincipalCard,
 .quizPainelCard,
 .quizCursoCard,
-.quizCursoResumo,
-.quizCefrItem {
+.quizCursoResumo {
   border-radius: 24px;
   background: rgba(255, 255, 255, 0.92);
   border: 1px solid rgba(64, 115, 226, 0.16);
@@ -299,58 +296,6 @@
   color: var(--cor--destaque);
   font-size: 0.93rem;
   line-height: 1.5;
-}
-
-.quizCefrLista {
-  display: grid;
-  gap: 16px;
-}
-
-.quizCefrItem {
-  overflow: hidden;
-}
-
-.quizCefrItem summary {
-  list-style: none;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 16px;
-  align-items: center;
-  padding: 22px 24px;
-  cursor: pointer;
-}
-
-.quizCefrItem summary::-webkit-details-marker {
-  display: none;
-}
-
-.quizCefrTitulo {
-  font-family: var(--font--menu);
-  font-size: 1.2rem;
-  color: var(--cor--principal);
-}
-
-.quizCefrAcao {
-  color: var(--cor--destaque);
-}
-
-.quizCefrConteudo {
-  padding: 0 24px 22px;
-  display: grid;
-  gap: 16px;
-}
-
-.quizCefrItem.estaAtual {
-  border-color: rgba(200, 16, 46, 0.34);
-}
-
-.quizSecaoAcoes {
-  margin-top: 24px;
-  display: flex;
-}
-
-.quizAcaoInline {
-  justify-content: center;
 }
 
 .quizAreaGrade {
@@ -797,7 +742,6 @@ body.dark .quizPrincipalCard,
 body.dark .quizPainelCard,
 body.dark .quizCursoCard,
 body.dark .quizCursoResumo,
-body.dark .quizCefrItem,
 body.dark .quizIntroducao,
 body.dark .quizQuestaoCard,
 body.dark .quizResultado,
@@ -828,7 +772,6 @@ body.dark .quizResultadoDetalhes p,
 body.dark .quizRetorno,
 body.dark .quizCursoCard p,
 body.dark .quizCursoResumo p,
-body.dark .quizCefrConteudo p,
 body.dark .quizInfoCard span,
 body.dark .quizPainelProximo p,
 body.dark .quizIdiomaTexto,
@@ -861,6 +804,5 @@ body.dark .quizBotaoSecundario:hover {
   color: #fff;
   border-color: rgba(200, 16, 46, 0.36);
 }
-
 
 

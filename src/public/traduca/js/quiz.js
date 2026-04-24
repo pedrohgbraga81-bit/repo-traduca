@@ -7,8 +7,6 @@ const htmlDecoder = document.createElement('textarea');
 
 const elements = {
   languageOptions: document.getElementById('quiz-language-options'),
-  cefrLevels: document.getElementById('quiz-cefr-levels'),
-  cefrCta: document.getElementById('quiz-cefr-cta'),
   activeTitle: document.getElementById('quiz-active-title'),
   metaLanguage: document.getElementById('quiz-meta-language'),
   guidedIntro: document.getElementById('quiz-guided-intro'),
@@ -89,16 +87,6 @@ function bindEvents() {
         scrollToSection(selector);
       }
     }
-  });
-
-  elements.cefrCta?.addEventListener('click', () => {
-    if (getSelectedLanguage()) {
-      scrollToSection('#quiz-workspace');
-      focusWithinWorkspace();
-      return;
-    }
-
-    scrollToSection('#quiz-language');
   });
 
   elements.startButton?.addEventListener('click', () => {
@@ -220,7 +208,6 @@ function advanceQuiz() {
 
 function renderPage() {
   renderLanguageOptions();
-  renderCefrLevels();
   renderWorkspace();
   renderDashboard();
   renderCourseExplorer();
@@ -250,36 +237,6 @@ function renderLanguageOptions() {
           ${result ? `Ultimo resultado: ${result.levelId} - ${result.levelName}` : '12 perguntas | Recomendação de curso ao final'}
         </span>
       </button>
-    `;
-  }).join('');
-}
-
-function renderCefrLevels() {
-  if (!elements.cefrLevels) {
-    return;
-  }
-
-  const preferredResult = getPreferredResult();
-  const preferredLevelId = preferredResult ? preferredResult.levelId : 'A1';
-
-  elements.cefrLevels.innerHTML = CEFR_LEVELS.map((level) => {
-    const isCurrent = level.id === preferredLevelId;
-
-    return `
-      <details class="quizCefrItem${isCurrent ? ' estaAtual' : ''}" ${isCurrent ? 'open' : ''}>
-        <summary>
-          <span class="quizNivel">${level.id}</span>
-          <span class="quizCefrTitulo">${level.name}</span>
-          <span class="quizCefrAcao">Ver mais</span>
-        </summary>
-        <div class="quizCefrConteudo">
-          <p>${level.overview}</p>
-          <p>${level.courseSummary}</p>
-          <button type="button" class="quizBotaoSecundario" data-scroll-target="#quiz-workspace">
-            Fazer teste de nivelamento
-          </button>
-        </div>
-      </details>
     `;
   }).join('');
 }
@@ -870,4 +827,3 @@ function createDefaultState() {
     latestResult: defaultState.latestResult
   };
 }
-
