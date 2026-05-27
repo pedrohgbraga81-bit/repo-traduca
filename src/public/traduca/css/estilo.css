@@ -107,7 +107,7 @@ button,
 }
 
 body.dark .topo h1 {
-  background-image: url("../img/LogoBranco.svg") !important;
+  background-image: url(../img/logoBranco.svg) !important;
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -1354,9 +1354,6 @@ nav ul li.dropdown:hover .submenu {
 /* ########## CTA HIGHLIGHT ########## */
 .cta-highlight {
   padding: 48px 0 72px;
-  background:
-    radial-gradient(circle at top left, rgba(200, 16, 46, 0.12), transparent 34%),
-    linear-gradient(180deg, rgba(64, 115, 226, 0.06) 0%, rgba(64, 115, 226, 0) 100%);
 }
 
 .cta-highlight .container {

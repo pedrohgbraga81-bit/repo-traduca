@@ -11,5 +11,8 @@ use Illuminate\Support\Facades\Route;
 Route::get("/", [HomeController::class,'home'])->name('home');
 Route::get("/sobre", [SobreController::class,'sobre'])->name('sobre');
 Route::get("/servicos", [ServicoController::class,'servico'])->name('servico');
+//Rotas dinâmicas para categorias dropdown
+
+
 Route::get("/quiz", [QuizController::class,'quiz'])->name('quiz');
 Route::get("/contato", [ContatoController::class,'contato'])->name('contato');

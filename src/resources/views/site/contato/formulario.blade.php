@@ -82,26 +82,7 @@ $nome = $nome ?? request()->nome ?? '';
             <!-- ################ FIM CARD WHATSAP##############  -->
         </div>
 
-        <h4>Nos siga nas redes sociais</h4>
 
-        <div class="social_media_icons">
-
-            <a href="#" class="icon-link twitter">
-                <i class="fa-brands fa-x-twitter"></i>
-            </a>
-
-            <a href="#" class="icon-link facebook">
-                <i class="fa-brands fa-facebook"></i>
-            </a>
-
-            <a href="#" class="icon-link linkedin">
-                <i class="fa-brands fa-linkedin"></i>
-            </a>
-
-            <a href="#" class="icon-link instagram">
-                <i class="fa-brands fa-instagram"></i>
-            </a>
-        </div>
     </section>
 
 
