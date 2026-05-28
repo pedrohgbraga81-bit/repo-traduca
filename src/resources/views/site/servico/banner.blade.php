@@ -4,7 +4,15 @@
   </div>
 
   <div class="container banner__content">
-    <h1>Pronto para dar um "up" na sua vida? Vem com a Traduca!</h1>
-    <p>Cursos de inglês, italiano e português para melhorar <br> seu vocabulário em diferentes idiomas</p>
+    <h1>Nossos Serviços</h1>
+    <p>Escolha o serviço ideal para <br> alcançar seus objetivos</p>
+    <div>
+      <div class="bannerBtnEsq">
+      <a href="{{ route('quiz') }}">Fazer teste de nível</a>
+    </div>
+    <div class="bannerBtnDir">
+      <a href="{{ route('contato') }}">Falar no WhatsApp</a>
+    </div>
+    </div>
   </div>
 </section>

@@ -25,6 +25,7 @@ if (toggle) {
   });
 }
 
+// Animação Timeline
 let currentLevel = 0;
 const totalLevels = 6;
 const sections = document.querySelectorAll('.timeline-section');
@@ -86,6 +87,10 @@ if (ageOptions.length) {
   });
 }
 
+// Fim Animação Timeline
+
+// Animação Abrir/Fechar Mobile
+
 const abrirMenu = document.querySelector('.abrir-menu');
 const fecharMenu = document.querySelector('.fechar-menu');
 
@@ -130,6 +135,8 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+
+// Animação Banner
 const parallaxBanners = document.querySelectorAll('[data-parallax-banner]');
 const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 const finePointerQuery = window.matchMedia('(pointer: fine)');
@@ -189,3 +196,25 @@ if (parallaxBanners.length && !reduceMotionQuery.matches) {
   window.addEventListener('resize', queueParallax);
   queueParallax();
 }
+// Fim Animação Banner
+
+// Animação Serviços
+
+const serviceTabs = document.querySelectorAll('[data-service-tab]');
+const servicePanels = document.querySelectorAll('[data-service-panel]');
+
+serviceTabs.forEach((tab) => {
+  tab.addEventListener('click', () => {
+    const target = tab.dataset.serviceTab;
+
+    serviceTabs.forEach((item) => {
+      item.classList.toggle('ativo', item === tab);
+    });
+
+    servicePanels.forEach((panel) => {
+      const isActive = panel.dataset.servicePanel === target;
+      panel.classList.toggle('ativo', isActive);
+      panel.hidden = !isActive;
+    });
+  });
+});

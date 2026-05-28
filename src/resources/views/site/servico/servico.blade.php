@@ -2,8 +2,9 @@
 
 @section('content')
     @include('site.servico.banner')
-    @include('site.servico.timeline')
     @include('site.servico.services')
+    @include('site.servico.cardsServicos')
+    @include('site.servico.timeline')
     @include('site.servico.chamada-destaque')
-    @include('site.servico.faxaetaria')
+    
 @endsection

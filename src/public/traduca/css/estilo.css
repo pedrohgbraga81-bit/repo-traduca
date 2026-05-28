@@ -366,6 +366,52 @@ nav ul li.dropdown:hover .submenu {
   text-align: left;
 }
 
+.banner__content div{
+  display: flex;
+  gap: 20px;
+}
+
+.bannerBtnEsq{
+  background: linear-gradient(90deg, var(--cor--destaque) 0%, var(--cor--principal)  100%);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.bannerBtnEsq a{
+  color: var(--cor--fundo);
+  text-decoration: none;
+}
+
+.bannerBtnEsq:hover{
+  background: linear-gradient(180deg, var(--cor--destaque) 0%, var(--cor--principal)  100%);;
+  /* anima o gradiente */
+  box-shadow: 0 6px 20px rgba(1, 33, 105, 0.5);
+  /* sombra mais forte */
+  transform: translateY(-3px);
+  /* leve subida */
+}
+
+.bannerBtnDir{
+  background: linear-gradient(90deg, var(--cor--destaque) 0%, var(--cor--principal)  100%);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.bannerBtnDir a{
+  color: var(--cor--fundo);
+  text-decoration: none;
+}
+
+.bannerBtnDir:hover{
+   background:linear-gradient(180deg, var(--cor--destaque) 0%, var(--cor--principal)  100%);;
+  /* anima o gradiente */
+  box-shadow: 0 6px 20px rgba(1, 33, 105, 0.5);
+  /* sombra mais forte */
+  transform: translateY(-3px);
+  /* leve subida */
+}
+
+
 @keyframes bannerFloat {
   from {
     transform: scale(1.12) translate3d(0, 0, 0);
@@ -1714,6 +1760,74 @@ nav ul li.dropdown:hover .submenu {
 /*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !!!!!!!!!! PAGINAS URL !!!!!!!!!!!! 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+.servicos-tabs {
+  padding: 56px 24px;
+}
+
+.servicos-tabs__nav {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 28px;
+  border-bottom: 1px solid rgba(64, 115, 226, 0.2);
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+
+.servico-tab {
+  background: transparent;
+  border: 0;
+  color: var(--cor--texto);
+  padding: 16px 10px;
+  display: grid;
+  gap: 8px;
+  place-items: center;
+  cursor: pointer;
+  position: relative;
+}
+
+.servico-tab i {
+  font-size: 1.4rem;
+}
+
+.servico-tab.ativo {
+  color: var(--cor--principal);
+}
+
+.servico-tab.ativo::after {
+  content: "";
+  position: absolute;
+  height: 3px;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  background: var(--cor--destaque);
+}
+
+.servico-panel {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 420px 1fr;
+  gap: 36px;
+  align-items: center;
+}
+
+.servico-panel[hidden] {
+  display: none;
+}
+
+.servico-panel img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+  .servico-panel {
+    grid-template-columns: 1fr;
+  }
+}
 
     .card-container {
       display: flex;

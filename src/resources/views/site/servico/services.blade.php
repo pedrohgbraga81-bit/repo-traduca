@@ -1,64 +1,86 @@
-<div class="services-container">
-        <!-- Card Professor Inglês -->
-        <div class="service-card ingles">
-            <div class="teacher-flag"></div>
-            <h2 class="teacher-name">Profº Renato Caetano</h2>
-            <p class="teacher-title">Especialista em Inglês Espanhol e Portugues</p>
-            
-            <ul class="services-list">
-                <li><div class="service-icon">📚</div><span class="service-desc">Aulas particulares personalizadas (todos os níveis)</span></li>
-                <li><div class="service-icon">🎯</div><span class="service-desc">Preparação TOEFL/IELTS/Cambridge</span></li>
-                <li><div class="service-icon">💼</div><span class="service-desc">Inglês para negócios e entrevistas</span></li>
-                <li><div class="service-icon">👥</div><span class="service-desc">Conversação fluente e pronúncia</span></li>
-                <li><div class="service-icon">📱</div><span class="service-desc">Aulas online via Zoom/Google Meet</span></li>
-            </ul>
+<section class="servicos-tabs">
+  <div class="servicos-tabs__nav">
+    @foreach ($tipos as $slug => $label)
+        <a
+            href="{{ route('servico', ['tipo' => $slug]) }}"
+            class="servico-tab {{ $tipoAtual === $slug ? 'ativo' : '' }}"
+            data-service-tab="{{ $slug }}">
+            {{ $label }}
+        </a>
+    @endforeach
+</div>
 
-            <div class="contact-section">
-                <h3>Agende sua aula experimental!</h3>
-                <p>R$ 80/hora | 1ª aula grátis</p>
-                <a href="https://wa.me/5511999999999" class="contact-btn" target="_blank">WhatsApp Agora</a>
-            </div>
-        </div>
+  <div class="servicos-tabs__content">
+    <article class="servico-panel ativo" data-service-panel="aulas">
+      <img src="{{ asset('traduca/img/idade3.jpg') }}" alt="Aula online de idiomas">
 
-        <!-- Card Professor Espanhol -->
-        <div class="service-card espanhol">
-            <div class="teacher-flag"></div>
-            <h2 class="teacher-name">Profº Renato Caetano</h2>
-            <p class="teacher-title">Nativo Espanhol - DELE Certificado</p>
-            
-            <ul class="services-list">
-                <li><div class="service-icon">🇪🇸</div><span class="service-desc">Espanhol nativo (Espanha/América Latina)</span></li>
-                <li><div class="service-icon">📖</div><span class="service-desc">Preparatório DELE A1-C2</span></li>
-                <li><div class="service-icon">✈️</div><span class="service-desc">Viagem e imersão cultural</span></li>
-                <li><div class="service-icon">🎓</div><span class="service-desc">Gramática avançada e conversação</span></li>
-                <li><div class="service-icon">👨‍💼</div><span class="service-desc">Espanhol comercial para empresas</span></li>
-            </ul>
+      <div>
+        <h2>Aulas personalizadas</h2>
+        <p>Aulas online ou presenciais, de acordo com seu objetivo, nível e rotina.</p>
 
-            <div class="contact-section">
-                <h3>Comece a falar espanhol hoje!</h3>
-                <p>R$ 00,00/hora | Pacotes mensais</p>
-                <a href="https://wa.me/5511888888888" class="contact-btn" target="_blank">Falar com Renato Caetano</a>
-            </div>
-        </div>
+        <ul>
+          <li>Inglês, italiano e português</li>
+          <li>Foco em conversação</li>
+          <li>Material exclusivo</li>
+          <li>Flexibilidade de horários</li>
+        </ul>
 
-        <!-- Card Professor Português -->
-        <div class="service-card portugues">
-            <div class="teacher-flag"></div>
-            <h2 class="teacher-name">Profº Renato Caetano</h2>
-            <p class="teacher-title">Português para Estrangeiros </p>
-            
-            <ul class="services-list">
-                <li><div class="service-icon">🇧🇷</div><span class="service-desc">Português brasileiro para estrangeiros</span></li>
-                <li><div class="service-icon">📜</div><span class="service-desc">Preparação CELPE-Bras todos níveis</span></li>
-                <li><div class="service-icon">🎤</div><span class="service-desc">Pronúncia e entonação natural</span></li>
-                <li><div class="service-icon">🌎</div><span class="service-desc">Cultura brasileira e gírias</span></li>
-                <li><div class="service-icon">🔤</div><span class="service-desc">Alfabetização e gramática</span></li>
-            </ul>
+        <a href="{{ route('contato') }}" class="btn-gradient">Quero saber mais</a>
+      </div>
+    </article>
 
-            <div class="contact-section">
-                <h3>Aula experimental gratuita!</h3>
-                <p>R$ 70/hora | Grupos reduzidos</p>
-                <a href="https://wa.me/5511777777777" class="contact-btn" target="_blank">Agendar Aula</a>
-            </div>
-        </div>
-    </div>
+    <article class="servico-panel" data-service-panel="traducao" hidden>
+      <img src="{{ asset('traduca/img/banner2.jpg') }}" alt="Tradução de textos">
+
+      <div>
+        <h2>Tradução profissional</h2>
+        <p>Traduções naturais e fiéis ao contexto para textos acadêmicos, institucionais e profissionais.</p>
+
+        <ul>
+          <li>Português, inglês e italiano</li>
+          <li>Adaptação de tom e contexto</li>
+          <li>Revisão final inclusa</li>
+          <li>Orçamento por demanda</li>
+        </ul>
+
+        <a href="{{ route('contato') }}" class="btn-gradient">Pedir orçamento</a>
+      </div>
+    </article>
+
+    <article class="servico-panel" data-service-panel="revisao" hidden>
+      <img src="{{ asset('traduca/img/banner2.jpg') }}" alt="Revisão de textos">
+
+      <div>
+        <h2>Revisão de textos</h2>
+        <p>Análise sintática e ortográfica do seu texto</p>
+
+        <ul>
+          <li>Português, inglês e italiano</li>
+          <li>Coesão e coerência</li>
+          <li>Sugestões e dicas</li>
+          <li>Orçamento por demanda</li>
+        </ul>
+
+        <a href="{{ route('contato') }}" class="btn-gradient">Pedir orçamento</a>
+      </div>
+    </article>
+
+     <article class="servico-panel" data-service-panel="redacao" hidden>
+      <img src="{{ asset('traduca/img/banner2.jpg') }}" alt="Revisão de textos">
+
+      <div>
+        <h2>Redação de alto nível</h2>
+        <p>Execução e avaliação de redações personalizadas</p>
+
+        <ul>
+          <li>Português e inglês</li>
+          <li>Coesão e coerência</li>
+          <li>Análise sintática e ortográfica</li>
+          <li>Subir o nível do desempenho</li>
+        </ul>
+
+        <a href="{{ route('contato') }}" class="btn-gradient">Pedir orçamento</a>
+      </div>
+    </article>
+  </div>
+</section>
