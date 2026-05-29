@@ -1975,26 +1975,48 @@ nav ul li.dropdown:hover .submenu {
 
  .services-container {
    max-width: 1200px;
-   margin: 0 auto;
+   margin: 0 auto 64px;
+   padding: 24px;
    display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-   gap: 30px;
+   grid-template-columns: repeat(auto-fit, minmax(260px, 320px));
+   justify-content: center;
+   align-items: stretch;
+   gap: 24px;
    font-family: var(--fonte--base);
-   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-   min-height: 100vh;
-   padding: 40px 20px;
-   left: auto;
    border-radius: 25px;
  }
 
  .service-card {
+   min-height: 430px;
    background: white;
-   border-radius: 20px;
-   padding: 30px;
+   border-radius: 16px;
+   padding: 24px;
    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-   transition: all 0.4s ease;
+   transition: transform 0.25s ease, box-shadow 0.25s ease;
    position: relative;
    overflow: hidden;
+   display: flex;
+   flex-direction: column;
+ }
+
+ .service-card[hidden] {
+   display: none;
+ }
+
+ .service-card.ativo {
+   animation: serviceCardIn 0.28s ease both;
+ }
+
+ @keyframes serviceCardIn {
+   from {
+     opacity: 0;
+     transform: translateY(14px);
+   }
+
+   to {
+     opacity: 1;
+     transform: translateY(0);
+   }
  }
 
  .service-card::before {
@@ -2012,6 +2034,15 @@ nav ul li.dropdown:hover .submenu {
    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
  }
 
+ .service-card__image {
+   width: 100%;
+   aspect-ratio: 16 / 10;
+   object-fit: cover;
+   border-radius: 12px;
+   margin-bottom: 18px;
+   background: #eef2f7;
+ }
+
  .teacher-flag {
    width: 60px;
    height: 40px;
@@ -2020,20 +2051,8 @@ nav ul li.dropdown:hover .submenu {
    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
  }
 
- .service-card.ingles .teacher-flag {
-   background: linear-gradient(to bottom, #ff0000 33%, #ffffff 33% 66%, #000080 66%);
- }
-
- .service-card.espanhol .teacher-flag {
-   background: linear-gradient(to bottom, #009b3a 50%, #fed100 50%);
- }
-
- .service-card.portugues .teacher-flag {
-   background: linear-gradient(to bottom, #009c3b 40%, #002776 40% 60%, #ffde00 60%);
- }
-
  .teacher-name {
-   font-size: 24px;
+   font-size: 22px;
    font-weight: 700;
    color: #2c3e50;
    margin-bottom: 10px;
@@ -2041,21 +2060,22 @@ nav ul li.dropdown:hover .submenu {
 
  .teacher-title {
    color: #7f8c8d;
-   font-size: 16px;
-   margin-bottom: 25px;
+   font-size: 15px;
+   margin-bottom: 18px;
    font-weight: 500;
  }
 
  .services-list {
    list-style: none;
-   margin-bottom: 25px;
+   margin: 0 0 20px;
+   padding: 0;
  }
 
  .services-list li {
-   padding: 12px 0;
+   padding: 10px 0;
    border-bottom: 1px solid #ecf0f1;
    display: flex;
-   align-items: center;
+   align-items: flex-start;
    gap: 12px;
  }
 
@@ -2064,8 +2084,8 @@ nav ul li.dropdown:hover .submenu {
  }
 
  .service-icon {
-   width: 24px;
-   height: 24px;
+   width: 22px;
+   height: 22px;
    background: linear-gradient(135deg, #4facfe, #00f2fe);
    border-radius: 50%;
    display: flex;
@@ -2074,20 +2094,22 @@ nav ul li.dropdown:hover .submenu {
    font-size: 12px;
    color: white;
    font-weight: bold;
+   flex: 0 0 22px;
  }
 
  .service-desc {
    font-weight: 500;
    color: #34495e;
+   line-height: 1.35;
  }
 
  .contact-section {
    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
    color: white;
-   padding: 20px;
-   border-radius: 15px;
+   padding: 18px;
+   border-radius: 14px;
    text-align: center;
-   margin-top: 20px;
+   margin-top: auto;
  }
 
  .contact-btn {
@@ -2117,6 +2139,7 @@ nav ul li.dropdown:hover .submenu {
 
    .service-card {
      padding: 25px 20px;
+     min-height: auto;
    }
  }
 

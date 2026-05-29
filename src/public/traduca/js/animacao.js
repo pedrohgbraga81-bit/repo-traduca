@@ -201,20 +201,47 @@ if (parallaxBanners.length && !reduceMotionQuery.matches) {
 // Animação Serviços
 
 const serviceTabs = document.querySelectorAll('[data-service-tab]');
-const servicePanels = document.querySelectorAll('[data-service-panel]');
+const serviceCards = document.querySelectorAll('[data-service-card]');
+const serviceEmpty = document.querySelector('[data-service-empty]');
 
-serviceTabs.forEach((tab) => {
-  tab.addEventListener('click', () => {
-    const target = tab.dataset.serviceTab;
+if (serviceTabs.length && serviceCards.length) {
+  function activateServiceTab(tipo, updateUrl = true) {
+    const activeTab = document.querySelector(`[data-service-tab="${tipo}"]`);
+    if (!activeTab) return;
 
-    serviceTabs.forEach((item) => {
-      item.classList.toggle('ativo', item === tab);
+    let visibleCards = 0;
+
+    serviceTabs.forEach((tab) => {
+      tab.classList.toggle('ativo', tab === activeTab);
     });
 
-    servicePanels.forEach((panel) => {
-      const isActive = panel.dataset.servicePanel === target;
-      panel.classList.toggle('ativo', isActive);
-      panel.hidden = !isActive;
+    serviceCards.forEach((card) => {
+      const isActive = card.dataset.serviceCard === tipo;
+
+      card.hidden = !isActive;
+      card.classList.toggle('ativo', isActive);
+
+      if (isActive) visibleCards += 1;
+    });
+
+    if (serviceEmpty) {
+      serviceEmpty.hidden = visibleCards > 0;
+    }
+
+    if (updateUrl) {
+      window.history.pushState({ tipo }, '', activeTab.getAttribute('href'));
+    }
+  }
+
+  serviceTabs.forEach((tab) => {
+    tab.addEventListener('click', (event) => {
+      event.preventDefault();
+      activateServiceTab(tab.dataset.serviceTab);
     });
   });
-});
+
+  window.addEventListener('popstate', () => {
+    const params = new URLSearchParams(window.location.search);
+    activateServiceTab(params.get('tipo') || 'aulas', false);
+  });
+}

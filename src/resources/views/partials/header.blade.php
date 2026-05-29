@@ -9,7 +9,7 @@
 
             <li><a class="{{ request()->routeIs('home') ? 'ativo' : '' }}" href="{{ route('home') }}">Home</a></li>
             <li><a class="{{ request()->routeIs('sobre') ? 'ativo' : '' }}" href="{{ route('sobre') }}">Sobre</a></li>
-            <li><a class="{{ request()->routeIs('servico') ? 'ativo' : '' }}" href="{{ route('servico') }}">Serviços</a></li>
+            <li><a class="{{ request()->routeIs('servico.index') ? 'ativo' : '' }}" href="{{ route('servico.index') }}">Serviços</a></li>
             <li><a class="{{ request()->routeIs('quiz') ? 'ativo' : '' }}" href="{{ route('quiz') }}">Quiz</a></li>
             <li><a class="{{ request()->routeIs('contato') ? 'ativo' : '' }}" href="{{ route('contato') }}">Contato</a></li>
 

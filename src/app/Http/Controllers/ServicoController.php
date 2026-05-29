@@ -24,11 +24,15 @@ class ServicoController extends Controller
             $tipoAtual = 'aulas';
         }
 
-        $servicosPorTipo = Servico::with('ServicoProfessor')
+        $servicos = Servico::with('ServicoProfessor')
         ->orderBy('ordenar_servico')
-        ->get()
-        ->groupBy('tipo_servico');
+        ->get();
 
-        return view('site.servico.servico', compact('tipos', 'tipoAtual', 'servicosPorTipo'));
+        return view('site.servico.servico', compact('tipos', 'tipoAtual', 'servicos'));
+    }
+
+    public function show()
+    {
+        
     }
 }
