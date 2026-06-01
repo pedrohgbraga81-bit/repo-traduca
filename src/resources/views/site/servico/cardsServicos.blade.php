@@ -1,9 +1,7 @@
-<div class="services-container" data-service-cards>
+<div class="services-container">
     @forelse ($servicos as $servico)
         <article
-            class="service-card {{ $servico->classe_estilo_servico }}"
-            data-service-card="{{ $servico->tipo_servico }}"
-            {{ $servico->tipo_servico !== $tipoAtual ? 'hidden' : '' }}>
+            class="service-card {{ $servico->classe_estilo_servico }}">
             @if ($servico->imagem_servico)
                 <img
                     src="{{ asset('traduca/' . $servico->imagem_servico) }}"
@@ -33,13 +31,6 @@
             </div>
         </article>
     @empty
-        <p class="servicos-empty">Nenhum serviço cadastrado.</p>
+        <p class="servicos-empty">Nenhum serviço cadastrado para esta categoria.</p>
     @endforelse
-
-    <p
-        class="servicos-empty"
-        data-service-empty
-        {{ $servicos->where('tipo_servico', $tipoAtual)->isNotEmpty() ? 'hidden' : '' }}>
-        Nenhum serviço cadastrado para esta categoria.
-    </p>
 </div>

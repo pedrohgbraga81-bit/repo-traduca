@@ -378,7 +378,8 @@ nav ul li.dropdown:hover .submenu {
 }
 
 .bannerBtnEsq a{
-  color: var(--cor--fundo);
+  color: #fff;
+  font-family: var(--font--menu);
   text-decoration: none;
 }
 
@@ -398,7 +399,8 @@ nav ul li.dropdown:hover .submenu {
 }
 
 .bannerBtnDir a{
-  color: var(--cor--fundo);
+  color: #fff;
+  font-family: var(--font--menu);
   text-decoration: none;
 }
 
@@ -2159,6 +2161,12 @@ body.dark .timeline-container,
 body.dark .rodape {
   background-color: var(--cor--fundo);
   color: var(--cor--texto);
+  border-radius: 10px;
+}
+
+body.dark .topo{
+  border-radius: 10px;
+  border: #fff 1px solid;
 }
 
 body.dark nav ul li .submenu {
@@ -2211,10 +2219,6 @@ body.dark .quiz-box {
 
 body.dark .timeline-card {
   border-color: rgba(255, 255, 255, 0.15);
-}
-
-body.dark .services-container {
-  background: linear-gradient(135deg, #141414 0%, #222 100%);
 }
 
 body.dark #main_container {

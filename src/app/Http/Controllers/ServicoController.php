@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Servico;
-use App\Models\Professor;
 
 class ServicoController extends Controller
 {
-    public function servico()
+    public function servico($tipo = 'aulas')
     {
         $tipos = [
             'aulas' => 'Aulas',
@@ -18,21 +16,17 @@ class ServicoController extends Controller
             'preparatorios' => 'Preparatórios',
         ];
 
-        $tipoAtual = request('tipo', 'aulas');
-
-        if (!array_key_exists($tipoAtual, $tipos)){
-            $tipoAtual = 'aulas';
+        if (!array_key_exists($tipo, $tipos)){
+            $tipo = 'aulas';
         }
 
+        $tipoAtual = $tipo;
+
         $servicos = Servico::with('ServicoProfessor')
+        ->where('tipo_servico', $tipoAtual)
         ->orderBy('ordenar_servico')
         ->get();
 
         return view('site.servico.servico', compact('tipos', 'tipoAtual', 'servicos'));
-    }
-
-    public function show()
-    {
-        
     }
 }

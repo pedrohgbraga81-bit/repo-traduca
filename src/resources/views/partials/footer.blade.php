@@ -8,38 +8,11 @@
       </p>
     </div>
 
-    <button class="btnServico"
-      data-titulo="Aulas"
-      data-texto="Aulas personalizadas, focadas no seu nível e objetivo. Online ou presencial.">
-      Aulas
-    </button>
-
-    <button class="btnServico"
-      data-titulo="Revisão"
-      data-texto="Revisão de textos com correções gramaticais, sugestões e melhoria de clareza.">
-      Revisão
-    </button>
-
-    <button class="btnServico"
-      data-titulo="Redação"
-      data-texto="Acompanhamento completo para produção de redações acadêmicas e escolares.">
-      Redação
-    </button>
-
-    <button class="btnServico"
-      data-titulo="Tradução"
-      data-texto="Traduções fiéis e naturais, respeitando contexto e objetivo do texto.">
-      Tradução
-    </button>
-
-    <div class="cardServico" id="modalServico">
-      <div class="cardBox">
-        <button class="fecharCard">&times;</button>
-        <h2 id="cardTitulo"></h2>
-        <p id="cardTexto"></p>
-      </div>
-    </div>
-
+    <a href="{{ route('servico', 'aulas') }}">Aulas</a>
+    <a href="{{ route('servico', 'traducao') }}">Tradução</a>
+    <a href="{{ route('servico', 'revisao') }}">Revisão</a>
+    <a href="{{ route('servico', 'redacao') }}">Redação</a>
+    <a href="{{ route('servico', 'preparatorios') }}">Preparatórios</a>
 
     <div class="rodape-redes">
       <span>Siga-me:</span>

@@ -14,7 +14,7 @@
         <span class="cta-highlight__eyebrow">Consultoria, revisão e Ghost Writing</span>
         <h2>Precisando transformar sua ideia em um texto de excelência?</h2>
         <p>Do rascunho ao texto final, você recebe orientação para organizar a mensagem, ganhar clareza e entregar um material mais forte e profissional.</p>
-        <a href="contato.php#contacts_container" class="cta-highlight__button">Quero falar sobre meu projeto</a>
+        <a href="{{ route('contato') }}" class="cta-highlight__button">Quero falar sobre meu projeto</a>
       </div>
     </div>
   </div>

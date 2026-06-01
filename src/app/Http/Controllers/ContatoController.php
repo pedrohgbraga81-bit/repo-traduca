@@ -10,4 +10,6 @@ class ContatoController extends Controller
     {
         return view('site.contato.contato');
     }
+    
+    
 }

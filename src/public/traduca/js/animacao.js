@@ -104,38 +104,6 @@ if (abrirMenu && fecharMenu) {
   };
 }
 
-// Cards do footer
-document.addEventListener('DOMContentLoaded', () => {
-  const modal = document.getElementById('modalServico');
-  if (!modal) return;
-
-  const titulo = document.getElementById('cardTitulo');
-  const texto = document.getElementById('cardTexto');
-  const btnFechar = modal.querySelector('.fecharCard');
-  const botoes = document.querySelectorAll('.btnServico');
-
-  if (!titulo || !texto || !btnFechar) return;
-
-  botoes.forEach(botao => {
-    botao.addEventListener('click', () => {
-      titulo.textContent = botao.dataset.titulo || 'Titulo nao definido';
-      texto.textContent = botao.dataset.texto || 'Texto nao definido';
-      modal.classList.add('active');
-    });
-  });
-
-  btnFechar.addEventListener('click', () => {
-    modal.classList.remove('active');
-  });
-
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal) {
-      modal.classList.remove('active');
-    }
-  });
-});
-
-
 // Animação Banner
 const parallaxBanners = document.querySelectorAll('[data-parallax-banner]');
 const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -197,51 +165,3 @@ if (parallaxBanners.length && !reduceMotionQuery.matches) {
   queueParallax();
 }
 // Fim Animação Banner
-
-// Animação Serviços
-
-const serviceTabs = document.querySelectorAll('[data-service-tab]');
-const serviceCards = document.querySelectorAll('[data-service-card]');
-const serviceEmpty = document.querySelector('[data-service-empty]');
-
-if (serviceTabs.length && serviceCards.length) {
-  function activateServiceTab(tipo, updateUrl = true) {
-    const activeTab = document.querySelector(`[data-service-tab="${tipo}"]`);
-    if (!activeTab) return;
-
-    let visibleCards = 0;
-
-    serviceTabs.forEach((tab) => {
-      tab.classList.toggle('ativo', tab === activeTab);
-    });
-
-    serviceCards.forEach((card) => {
-      const isActive = card.dataset.serviceCard === tipo;
-
-      card.hidden = !isActive;
-      card.classList.toggle('ativo', isActive);
-
-      if (isActive) visibleCards += 1;
-    });
-
-    if (serviceEmpty) {
-      serviceEmpty.hidden = visibleCards > 0;
-    }
-
-    if (updateUrl) {
-      window.history.pushState({ tipo }, '', activeTab.getAttribute('href'));
-    }
-  }
-
-  serviceTabs.forEach((tab) => {
-    tab.addEventListener('click', (event) => {
-      event.preventDefault();
-      activateServiceTab(tab.dataset.serviceTab);
-    });
-  });
-
-  window.addEventListener('popstate', () => {
-    const params = new URLSearchParams(window.location.search);
-    activateServiceTab(params.get('tipo') || 'aulas', false);
-  });
-}

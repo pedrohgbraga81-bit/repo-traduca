@@ -3,3 +3,4 @@
 @section('content')
     @include('site.quiz.all')
 @endsection
+

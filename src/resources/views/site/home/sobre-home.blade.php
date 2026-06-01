@@ -14,7 +14,7 @@
                     
      
                 </div>
-                <a href="sobre.php" class="btn-gradient">SAIBA MAIS</a>
+                <a href="{{route('sobre')}}" class="btn-gradient">SAIBA MAIS</a>
 
             </div>
         </div>
