@@ -2,16 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Alunos extends Model
+class Alunos extends Authenticatable
 {
     protected $table = 'tbl_alunos';
         protected $primaryKey = 'id_aluno';
         public $timestamps = true;
     
         const CREATED_AT = 'criado_em_aluno';
-        const UPDATE_AT = 'atualizado_em_aluno';
+        const UPDATED_AT = 'atualizado_em_aluno';
 
         protected $fillable = [
             'nome_aluno',
@@ -24,4 +24,9 @@ class Alunos extends Model
             'foto_aluno',
             'status_aluno'
         ];
+
+    public function getAuthPassword()
+    {
+        return $this->senha_aluno;
+    }
 }

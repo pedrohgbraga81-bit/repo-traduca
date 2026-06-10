@@ -2,17 +2,19 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+
 use App\Models\Servico;
 
-class Professor extends Model
+class Professor extends Authenticatable
 {
     protected $table = "tbl_professor";
     protected $primaryKey = 'id_professor';
     public $timestamps = true;
 
     const CREATED_AT = 'criado_em_professor';
-    const UPDATE_AT = 'atualizado_em_professor';
+    const UPDATED_AT = 'atualizado_em_professor';
 
     protected $fillable = [
         'nome_professor',
@@ -31,5 +33,10 @@ class Professor extends Model
     public function ProfessorServico(){
         return $this->hasMany(Servico::class,
         'id_professor', 'id_professor');
+    }
+
+    public function getAuthPassword()
+    {
+        return $this->senha_professor;
     }
 }
