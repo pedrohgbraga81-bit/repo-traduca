@@ -1,9 +1,9 @@
 ﻿import { CEFR_LEVELS, CEFR_ORDER, QUIZ_LANGUAGES } from './quiz-data.js';
 
-const STORAGE_KEY = 'fluent-path.quiz-state';
-const languageById = Object.fromEntries(QUIZ_LANGUAGES.map((language) => [language.id, language]));
-const levelById = Object.fromEntries(CEFR_LEVELS.map((level) => [level.id, level]));
-const htmlDecoder = document.createElement('textarea');
+const STORAGE_KEY = 'fluent-path.quiz-state'; // Namespace para evitar conflitos caso haja outros dados salvos no localStorage
+const languageById = Object.fromEntries(QUIZ_LANGUAGES.map((language) => [language.id, language])); // Mapeamento para acesso rápido aos dados dos idiomas
+const levelById = Object.fromEntries(CEFR_LEVELS.map((level) => [level.id, level])); // Mapeamento para acesso rápido aos dados dos níveis CEFR
+const htmlDecoder = document.createElement('textarea'); // Utilizado para decodificar entidades HTML presentes nos textos, garantindo que sejam exibidos corretamente
 
 const elements = {
   languageOptions: document.getElementById('quiz-language-options'),
@@ -42,15 +42,15 @@ const elements = {
   courseTitle: document.getElementById('quiz-course-title'),
   courseDescription: document.getElementById('quiz-course-description'),
   courseGrid: document.getElementById('quiz-course-grid')
-};
+};  // Cache de elementos DOM para evitar buscas repetidas e melhorar a performance, além de centralizar o acesso a esses elementos em um único objeto para facilitar a manutenção e leitura do código.
 
 const defaultState = {
   selectedLanguageId: null,
   sessions: {},
   latestResult: null
-};
+}; // Estado inicial padrão do aplicativo, utilizado como base para criar o estado atual e para resetar o estado quando necessário. Ele define que nenhum idioma está selecionado, não há sessões ativas e nenhum resultado recente foi registrado.
 
-let state = loadState();
+let state = loadState(); // Carrega o estado salvo do localStorage ou cria um novo estado padrão caso não haja dados salvos ou se ocorrer algum erro durante a recuperação. Isso garante que o progresso do usuário seja mantido entre as sessões e que o aplicativo possa ser retomado de onde parou.
 
 init();
 
@@ -420,7 +420,8 @@ function showRuntime(language, session) {
   elements.levelPill.textContent = question.level;
   elements.questionText.textContent = question.prompt;
   elements.questionHelper.textContent = question.helper;
-  elements.answerButtons.innerHTML = question.answers.map((answer) => {
+
+  elements.answerButtons.innerHTML = [...question.answers].sort(() => Math.random() - 0.5).map((answer) => {
     const answerState = getAnswerVisualState(answer, question, selectedAnswerId);
     const answerStatus = getAnswerStatusLabel(answerState);
 
@@ -435,7 +436,7 @@ function showRuntime(language, session) {
         ${answerStatus ? `<small>${answerStatus}</small>` : ''}
       </button>
     `;
-  }).join('');
+  }).join(''); 
 
   elements.feedback.innerHTML = selectedAnswerId
     ? buildAnswerFeedback(question, selectedAnswerId)

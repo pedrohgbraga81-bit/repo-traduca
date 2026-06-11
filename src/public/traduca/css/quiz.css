@@ -491,8 +491,8 @@
 }
 
 .quizAlternativa.estadoCorreta {
-  background: rgba(64, 115, 226, 0.1);
-  border-color: rgba(64, 115, 226, 0.42);
+  background: rgba(64, 226, 137, 0.1);
+  border-color: rgba(64, 226, 86, 0.42);
 }
 
 .quizAlternativa.estadoSelecionada {
