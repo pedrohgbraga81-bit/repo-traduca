@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Alunos;
+use App\Models\Aluno;
 use App\Models\Curso;
 use App\Models\Matriculas;
 use App\Models\Nivel;
@@ -14,13 +14,13 @@ class MatriculasController extends Controller
     private function dadosComuns(): array
     {
         return [
-            'alunos'           => Alunos::orderBy('nome_aluno')->get(),
+            'alunos'           => Aluno::orderBy('nome_aluno')->get(),
             'cursos'           => Curso::orderBy('nome_curso')->get(),
             'niveis'           => Nivel::orderBy('nome_nivel')->get(),
             'totalMatriculas'  => Matriculas::count(),
             'matriculasHoje'   => Matriculas::whereDate('data_matricula', now())->count(),
-            'alunosAtivos'  => Alunos::where('status_aluno', 'EM CURSO')->count(),
-            'alunosInativos' => Alunos::where('status_aluno', 'INATIVO')->count(),
+            'alunosAtivos'  => Aluno::where('status_aluno', 'EM CURSO')->count(),
+            'alunosInativos' => Aluno::where('status_aluno', 'INATIVO')->count(),
         ];
     }
 

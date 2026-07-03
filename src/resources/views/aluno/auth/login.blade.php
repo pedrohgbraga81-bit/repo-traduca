@@ -371,6 +371,15 @@
             <h1 class="titulo">Bem-vindo de volta</h1>
             <p class="subtitulo">Insira suas credenciais para continuar</p>
 
+            @if(session('sessao_expirada'))
+                <div class="alerta-erro">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+                    </svg>
+                    Sessão encerrada por inatividade. Faça login novamente.
+                </div>
+            @endif
+
             @if(session('error'))
                 <div class="alerta-erro">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -452,7 +461,38 @@
             }
         }
 
-        document.getElementById('formLogin').addEventListener('submit', function() {
+        // Validação de email em tempo real
+        const emailInput = document.getElementById('email_aluno');
+        const formLogin = document.getElementById('formLogin');
+
+        function validarEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        emailInput.addEventListener('input', function() {
+            const val = this.value.trim();
+            const erroExistente = this.parentElement.parentElement.querySelector('.erro-campo-js');
+            if (val.length > 0 && !validarEmail(val)) {
+                this.classList.add('is-invalido');
+                if (!erroExistente) {
+                    const p = document.createElement('p');
+                    p.className = 'erro-campo erro-campo-js';
+                    p.textContent = 'Digite um e-mail válido (ex: nome@email.com)';
+                    this.parentElement.parentElement.appendChild(p);
+                }
+            } else {
+                this.classList.remove('is-invalido');
+                if (erroExistente) erroExistente.remove();
+            }
+        });
+
+        formLogin.addEventListener('submit', function(e) {
+            const val = emailInput.value.trim();
+            if (val.length > 0 && !validarEmail(val)) {
+                e.preventDefault();
+                emailInput.focus();
+                return;
+            }
             document.getElementById('btnEntrar').classList.add('carregando');
         });
     </script>

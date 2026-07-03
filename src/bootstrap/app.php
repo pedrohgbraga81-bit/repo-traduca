@@ -12,8 +12,22 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->alias([
-            'auth' => \Illuminate\Auth\Middleware\Authenticate::class, 
+            'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
         ]);
+    })
+    ->withMiddleware(function (Middleware $middleware) {
+        $middleware->alias([
+            'session.timeout' => \App\Http\Middleware\SessionTimeout::class,
+        ]);
+        $middleware->redirectGuestsTo(function ($request) {
+            if (str_starts_with($request->path(), 'admin')) {
+                return route('admin.login');
+            }
+            if (str_starts_with($request->path(), 'aluno')) {
+                return route('aluno.login');
+            }
+            return route('admin.login');
+        });
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

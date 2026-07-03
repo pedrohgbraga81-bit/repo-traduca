@@ -145,7 +145,7 @@
             <!--begin::User Menu Dropdown-->
             <li class="nav-item dropdown user-menu">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                    <img src="{{ asset('traduca/img/' . auth('admin')->user()->foto_professor) }}"
+                    <img src="{{ asset('traducaidiomas/professor/' . auth('admin')->user()->foto_professor) }}"
                         style="width: 50px; height: 50px; object-fit: cover;" class="rounded-circle shadow"
                         alt="User Image" style="width: 40px; height: 40px; object-fit: cover;"
                         class="d-none d-md-inline">{{ auth('admin')->user()->nome_professor }}
@@ -153,7 +153,7 @@
                 <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
                     <!--begin::User Image-->
                     <li class="user-header text-bg-primary">
-                        <img src="{{ asset('traduca/img/' . auth('admin')->user()->foto_professor) }}"
+                        <img src="{{ asset('traducaidiomas/professor/' . auth('admin')->user()->foto_professor) }}"
                             style="width: 50px; height: 50px; object-fit: cover;" class="rounded-circle shadow"
                             alt="User Image" />
                         <p>

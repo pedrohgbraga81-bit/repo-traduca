@@ -20,15 +20,35 @@
           <li><a href="#"><img
                 src="{{ asset('traduca/img/instaBlack.svg') }}"
                 alt="Logo Instagram"
-                sizes="50px"></a></li>
+                sizes="50px"></a>
+          </li>
           <li><a href="#"><img
                 src="{{ asset('traduca/img/linkeBlack.svg') }}"
                 alt="Logo linkedln"
-                sizes="50px"></a></li>
+                sizes="50px"></a>
+          </li>
           <li><a href="#"><img
                 src="{{ asset('traduca/img/whatsBlack.svg') }}"
                 alt="Logo Whats"
-                sizes="50px"></a></li>
+                sizes="50px"></a>
+          </li>
+          <li class="cart-btn">
+            @if(auth('aluno')->check() && auth('aluno')->user()->matriculas()->where('status_matricula', 'ATIVO')->exists())
+            <a href="{{ route('aluno.dash') }}">
+              <i class="fa fa-user-graduate" style="font-size: 30px;"></i>
+            </a>
+            @else
+            <a href="{{ route('aluno.login') }}">
+              <i class="fa fa-user-graduate" style="font-size: 30px;"></i>
+            </a>
+            @endif
+          </li>
+          <li class="cart-btn">
+            <a href="{{ route('admin.login') }}">
+              <i class="fa fa-user-shield" style="font-size: 30px;"></i>
+              <span class="count"></span>
+            </a>
+          </li>
         </ul>
         <label class="theme-switch">
           <input type="checkbox" id="theme-toggle">

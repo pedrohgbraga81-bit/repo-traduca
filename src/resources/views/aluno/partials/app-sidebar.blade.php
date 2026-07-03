@@ -1,7 +1,12 @@
-<aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
+<aside class="app-sidebar shadow" data-bs-theme="dark" style="background:linear-gradient(180deg,#1a1a2e 0%,#16213e 60%,#0f3460 100%) !important;">
     <div class="sidebar-brand">
         <a href="{{ route('aluno.dash') }}" class="brand-link">
-            <img src="{{ asset('traducaidiomas/img/logo.png') }}"
+            @php
+                $logoFile = \App\Models\ConfiguracaoPainel::get('logo_painel') ?: 'logo.png';
+                $logoPath = public_path('traducaidiomas/img/' . $logoFile);
+                $logoVer = file_exists($logoPath) ? filemtime($logoPath) : time();
+            @endphp
+            <img src="{{ asset('traducaidiomas/img/' . $logoFile) }}?v={{ $logoVer }}"
                 alt="Traduca Idiomas" class="brand-image opacity-75 shadow" />
             <span class="brand-text fw-light">Portal do Aluno</span>
         </a>
@@ -29,15 +34,21 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('aluno.aulas.index') }}" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
                                 <p>Minhas Aulas</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('aluno.progresso.index') }}" class="nav-link">
                                 <i class="nav-icon bi bi-circle"></i>
                                 <p>Meu Progresso</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('aluno.atividades.index') }}" class="nav-link">
+                                <i class="nav-icon bi bi-circle"></i>
+                                <p>Minhas Atividades</p>
                             </a>
                         </li>
                     </ul>

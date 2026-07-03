@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Professor;
@@ -15,7 +15,7 @@ public function index()
     $totalCursos      = $professores->pluck('curso_professor')->unique()->filter()->count();
     $mediaExperiencia = $professores->avg(fn($p) => (int) filter_var($p->experiencia_professor, FILTER_SANITIZE_NUMBER_INT)) ?? 0;
 
-    $alunos         = \App\Models\Alunos::all();
+    $alunos         = \App\Models\Aluno::all();
     $totalAlunos    = $alunos->count();
     $iniciantes     = $alunos->where('nivel_aluno', 'Iniciante')->count();
     $intermediarios = $alunos->where('nivel_aluno', 'Intermediário')->count();
@@ -47,15 +47,12 @@ public function store(Request $request)
         'senha_professor'         => 'required|string|min:6|confirmed',
     ]);
 
-    $dados = $request->except(['foto_professor']);
+    $dados = $request->except(['foto_professor', '_token', 'senha_professor_confirmation']);
     $dados['senha_professor'] = Hash::make($request->senha_professor);
 
     if ($request->hasFile('foto_professor')) {
-
         $arquivo = $request->file('foto_professor');
-
         $nomeFoto = time() . '_' . uniqid() . '.' . $arquivo->getClientOriginalExtension();
-
         $diretorioDestino = public_path('traducaidiomas/professor/');
 
         if (!file_exists($diretorioDestino)) {
@@ -63,11 +60,12 @@ public function store(Request $request)
         }
 
         $arquivo->move($diretorioDestino, $nomeFoto);
-
-        $dados['foto_professor'] = 'traducaidiomas/professor/' . $nomeFoto;
+        $dados['foto_professor'] = $nomeFoto;
+    } else {
+        $dados['foto_professor'] = '';
     }
 
-Professor::create($dados);
+    Professor::create($dados);
 
 return redirect()
     ->route('admin.professores.index')
@@ -126,8 +124,9 @@ return redirect()
         }
 
         if ($request->hasFile('foto_professor')) {
-            if ($professor->foto_professor && file_exists(public_path($professor->foto_professor))) {
-                @unlink(public_path($professor->foto_professor));
+            $fotoAntiga = public_path('traducaidiomas/professor/' . $professor->foto_professor);
+            if ($professor->foto_professor && file_exists($fotoAntiga)) {
+                @unlink($fotoAntiga);
             }
 
             $arquivo = $request->file('foto_professor');
@@ -140,7 +139,7 @@ return redirect()
                 // dd($request->file('foto_professor'));
 
            $arquivo->move($diretorioDestino, $nomeFoto);
-            $dados['foto_professor'] = 'traducaidiomas/professor/' . $nomeFoto;
+            $dados['foto_professor'] = $nomeFoto;
         }
 
         $professor->update($dados);
@@ -158,8 +157,9 @@ return redirect()
                 ->with('error', 'Professor não encontrado.');
         }
 
-        if ($professor->foto_professor && file_exists(public_path($professor->foto_professor))) {
-            @unlink(public_path($professor->foto_professor));
+        $fotoPath = public_path('traducaidiomas/professor/' . $professor->foto_professor);
+        if ($professor->foto_professor && file_exists($fotoPath)) {
+            @unlink($fotoPath);
         }
 
         $professor->delete();

@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
-use App\Models\Alunos;
+use App\Models\Aluno;
 use Illuminate\Http\Request;
 
 class AlunoController extends Controller
 {
     public function index()
     {
-        $alunos = Alunos::all();
+        $alunos = Aluno::all();
         return view('admin.alunos.index', compact('alunos'));
     }
 
@@ -23,7 +23,7 @@ class AlunoController extends Controller
         $request->validate([
             'nome_aluno'               => 'required|string|max:255',
             'email_aluno'              => 'required|email|unique:tbl_alunos,email_aluno',
-            'senha_aluno'              => 'nullable|string|min:6|confirmed',
+            'senha_aluno'              => 'required|string|min:6|confirmed',
             'telefone_aluno'           => 'required|string|max:20',
             'curso_aluno'              => 'required|string|max:100',
             'data_nasc_aluno'          => 'required|date',
@@ -32,30 +32,41 @@ class AlunoController extends Controller
             'foto_aluno'               => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        $data = $request->all();
+        $data = $request->only([
+            'nome_aluno', 'email_aluno', 'telefone_aluno',
+            'curso_aluno', 'data_nasc_aluno', 'nivel_aluno', 'status_aluno',
+        ]);
         $data['senha_aluno'] = bcrypt($request->senha_aluno);
 
         if ($request->hasFile('foto_aluno')) {
             $foto = $request->file('foto_aluno');
             $nome = strtolower(str_replace(' ', '-', $request->nome_aluno)) . '.' . $foto->getClientOriginalExtension();
-            $foto->move(public_path('traducaidiomas/alunos'), $nome);
+            $destino = public_path('traducaidiomas/alunos');
+
+            if (!file_exists($destino)) {
+                mkdir($destino, 0777, true);
+            }
+
+            $foto->move($destino, $nome);
             $data['foto_aluno'] = $nome;
+        } else {
+            $data['foto_aluno'] = '';
         }
 
-        Alunos::create($data);
+        Aluno::create($data);
 
         return redirect()->route('admin.alunos.index')->with('success', 'Aluno cadastrado com sucesso!');
     }
 
     public function edit($id)
     {
-        $aluno = Alunos::findOrFail($id);
+        $aluno = Aluno::findOrFail($id);
         return view('admin.alunos.edit', compact('aluno'));
     }
 
     public function update(Request $request, $id)
     {
-        $aluno = Alunos::findOrFail($id);
+        $aluno = Aluno::findOrFail($id);
 
         $request->validate([
             'nome_aluno'      => 'required|string|max:255',
@@ -69,9 +80,11 @@ class AlunoController extends Controller
             'foto_aluno'      => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        $data = $request->except(['senha_aluno', 'senha_aluno_confirmation']);
+        $data = $request->only([
+            'nome_aluno', 'email_aluno', 'telefone_aluno',
+            'curso_aluno', 'data_nasc_aluno', 'nivel_aluno', 'status_aluno',
+        ]);
 
-        // Só atualiza a senha se foi preenchida
         if ($request->filled('senha_aluno')) {
             $data['senha_aluno'] = bcrypt($request->senha_aluno);
         }
@@ -79,7 +92,13 @@ class AlunoController extends Controller
         if ($request->hasFile('foto_aluno')) {
             $foto = $request->file('foto_aluno');
             $nome = strtolower(str_replace(' ', '-', $request->nome_aluno)) . '.' . $foto->getClientOriginalExtension();
-            $foto->move(public_path('traducaidiomas/alunos'), $nome);
+            $destino = public_path('traducaidiomas/alunos');
+
+            if (!file_exists($destino)) {
+                mkdir($destino, 0777, true);
+            }
+
+            $foto->move($destino, $nome);
             $data['foto_aluno'] = $nome;
         }
 
@@ -92,7 +111,7 @@ class AlunoController extends Controller
 
     public function updateStatus(Request $request, $id)
 {
-    $aluno = Alunos::findOrFail($id);
+    $aluno = Aluno::findOrFail($id);
     $aluno->status_aluno = $request->status_aluno;
     $aluno->save();
 
@@ -101,7 +120,7 @@ class AlunoController extends Controller
 
     public function destroy($id)
     {
-        Alunos::findOrFail($id)->delete();
+        Aluno::findOrFail($id)->delete();
         return redirect()->route('admin.alunos.index')->with('success', 'Aluno excluído com sucesso!');
     }
 }

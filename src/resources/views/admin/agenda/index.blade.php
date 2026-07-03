@@ -1,7 +1,7 @@
 @extends('admin.layout.admin')
 
 @section('content')
-<link rel="stylesheet" href="{{ asset('traduca/css/dashboard.css') }}">
+<link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 
 <div class="app-content-header">
     <div class="container-fluid">
