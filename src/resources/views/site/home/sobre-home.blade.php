@@ -1,22 +1,47 @@
-<section id="sobre-home" class="sobre_home">
-    <div class="container">
-        <div class="sobre-container">
-            <div class="foto-container ">
-                <img src="{{ asset('traduca/img/imagem.jpg') }}" alt="Betina Ruiz - Professora e Escritora" class="foto-perfil" width="799" height="800" loading="lazy" decoding="async">
-            </div>
-            
-            <div class="texto-sobre">
-                <h2>Biografia</h2>
-                <div class="biografia-texto">
-                  <p>
-            Sou Renato Caetano, consultor e professor trilíngue formado em Letras, com experiência em ensino, tradução e design instrucional.  Atualmente, curso Design Instrucional no Senac-SP.
- </p>
-                    
-     
-                </div>
-                <a href="{{route('sobre')}}" class="btn-gradient">SAIBA MAIS</a>
+@php
+    use App\Models\ConfiguracaoPainel;
+    $sobreFoto  = ConfiguracaoPainel::get('sobre_foto', '');
+    $sobreTexto = ConfiguracaoPainel::get('sobre_pagina_texto', 'Atuo no setor corporativo e acadêmico desenvolvendo projetos educacionais, treinamentos e materiais didáticos. Já traduzi conteúdos educacionais, institucionais e publicitários para clientes como Mercedes-Benz e Enel, e trabalho como Tradutor Sênior de inglês e italiano. Passei por cargos de liderança pedagógica no Yázigi e na Bridge English Brasil, onde coordenei programas de inglês para multinacionais como Walmart, BASF, FMGlobal e 3M. Hoje, sou docente no Senac São Paulo, atuando com metodologias baseadas em projetos, e professor de italiano no Spazio Italiano, onde também preparo alunos para o exame CILS, do qual sou aplicador certificado.');
+    $foto = $sobreFoto ? asset('traduca/img/' . $sobreFoto) : asset('traduca/img/globo2.png');
+@endphp
 
+<section id="biografia-home" class="bio-section">
+    <div class="bio-wrapper">
+        <div class="bio-foto-col">
+            <div class="bio-foto-frame">
+                <img src="{{ $foto }}" alt="Professor Renato Caetano" class="bio-foto">
+                <div class="bio-foto-badge">
+                    <i class="fa-solid fa-award"></i> Professor Trilíngue
+                </div>
             </div>
+        </div>
+
+        <div class="bio-texto-col">
+            <span class="bio-eyebrow">Conheça o Professor</span>
+            <h2 class="bio-titulo">Biografia</h2>
+
+            <div class="bio-conteudo">
+                <p>{!! nl2br(e($sobreTexto)) !!}</p>
+            </div>
+
+            <div class="bio-stats">
+                <div class="bio-stat">
+                    <span class="bio-stat-num">3</span>
+                    <span class="bio-stat-label">Idiomas</span>
+                </div>
+                <div class="bio-stat">
+                    <span class="bio-stat-num">10+</span>
+                    <span class="bio-stat-label">Anos de experiência</span>
+                </div>
+                <div class="bio-stat">
+                    <span class="bio-stat-num">500+</span>
+                    <span class="bio-stat-label">Alunos formados</span>
+                </div>
+            </div>
+
+            <a href="{{ route('contato') }}" class="bio-btn">
+                Entre em Contato <i class="fa-solid fa-arrow-right"></i>
+            </a>
         </div>
     </div>
 </section>
